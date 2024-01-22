@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Online</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .login-container {
+            max-width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #35424a;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #29373d;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #35424a;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .product {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            margin: 1rem;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #total {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Toko Online</h1>
+    </header>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form>
+            <input type="text" placeholder="Username" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <div class="container">
+        <div class="product">
+            <h2>Produk 1</h2>
+            <p>Harga: $100</p>
+            <button onclick="addToCart(100)">Beli</button>
+        </div>
+        <div class="product">
+            <h2>Produk 2</h2>
+            <p>Harga: $150</p>
+            <button onclick="addToCart(150)">Beli</button>
+        </div>
+        <div class="product">
+            <h2>Produk 3</h2>
+            <p>Harga: $200</p>
+            <button onclick="addToCart(200)">Beli</button>
+        </div>
+        <hr>
+        <div>
+            <p>Total Belanja: $<span id="total">0</span></p>
+            <label for="payment">Jumlah Bayar: $</label>
+            <input type="number" id="payment">
+            <button onclick="calculateChange()">Hitung Kembalian</button>
+            <p>Kembalian: $<span id="change">0</span></p>
+        </div>
+    </div>
+
+    <script>
+        let total = 0;
+
+        function addToCart(price) {
+            total += price;
+            document.getElementById('total').textContent = total;
+        }
+
+        function calculateChange() {
+            const payment = parseFloat(document.getElementById('payment').value);
+            const change = payment - total;
+            document.getElementById('change').textContent = change.toFixed(2);
+        }
+    </script>
+</body>
+</html>
